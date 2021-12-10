@@ -1,0 +1,78 @@
+
+
+-- 2
+delimiter $$
+
+drop function if exists siglasacolor$$
+create function siglasacolor(c char)
+returns char(10)
+deterministic
+	begin
+	declare n char(10);
+	if c='R' then set n='Rojo';
+	elseif c='A' then set n='Azul';
+	else set n='error';
+	end if;
+	return n;
+	end$$
+	
+select siglasacolor('R')$$
+
+-- 3
+delimiter $$
+
+drop function if exists espar$$
+create function espar (n int)
+returns int
+deterministic
+	begin 
+	declare resultado int;
+	if mod(n,2)=0 then set resultado=1;
+	else set resultado =0;
+	end if;
+	return resultado;
+	end$$
+
+select espar (3)$$
+select espar (12)$$
+
+-- 4
+delimiter $$
+
+drop function if exists diasem$$
+create function diasem (x int)
+returns varchar(20)
+deterministic
+	begin
+	declare resultado varchar(20);
+	case x
+	when 1 then set resultado ="lunes";
+	when 2 then set resultado ="martes";
+	when 3 then set resultado ="miercoles";
+	when 4 then set resultado ="jueves";
+	when 5 then set resultado ="viernes";
+	when 6 then set resultado ="sabado";
+	when 7 then set resultado ="domingo";
+	else set resultado= "error";
+	end case;
+	return resultado;
+	end$$
+
+select diasem (5)$$
+
+-- 5
+delimiter $$
+
+drop function if exists esdi$$
+create function esdiv (n int, m int)
+returns int
+deterministic
+	begin 
+	declare resultado int;
+	if mod(n,m)=0 then set resultado=1;
+	else set resultado =0;
+	end if;
+	return resultado;
+	end$$
+
+select esdi (6,5)$$
