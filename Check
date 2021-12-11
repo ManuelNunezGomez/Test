@@ -21,7 +21,7 @@ select siglasacolor('R')$$
 -- 3
 delimiter $$
 
-drop function if exists espar$$
+drop function if exists espar$$ Esto está mal
 create function espar (n int)
 returns int
 deterministic
